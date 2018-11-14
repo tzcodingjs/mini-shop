@@ -8,6 +8,10 @@ i, dl, dt, dd, ol, ul, li,
 fieldset, form, label, table, tbody, tfoot, thead, tr, th, td{
     margin:0;
     padding:0;
+    font-size:30px;
+}
+html, body{
+  position: relative;
 }
 ul,li{
     list-style:none;
@@ -22,3 +26,11 @@ a:hover,
 a:active{
     color:#333;
 }
+
+ // 路由激活样式
+ .router-link-exact-active {
+  p {
+    color: #ab956d !important;
+  }
+}
+
