@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import myHeader from "@/components/header/header.vue";
-import myFooter from "@/components/footer/footer.vue";
+import myHeader from "@/components/public/header.vue";
+import myFooter from "@/components/public/footer.vue";
 export default {
   components: {
     myHeader,

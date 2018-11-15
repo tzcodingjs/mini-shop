@@ -21,10 +21,12 @@ export default {
   position:fixed;
   top:0;
   width:100%;
-  height:rem(86);
-  line-height:rem(86);
+  height:86px;
+  line-height:86px;
+  font-size:30px;
   text-align: center;
   background:#AB956D;
+  z-index:2;
   span{
     color:#fff;
   }

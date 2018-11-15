@@ -1,36 +1,75 @@
 @charset 'utf-8';
 
 // 重置样式
-html, body, div, span, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, address, em, img, strong, sub, sup,
-i, dl, dt, dd, ol, ul, li,
-fieldset, form, label, table, tbody, tfoot, thead, tr, th, td{
-    margin:0;
-    padding:0;
-    font-size:30px;
+html,
+body,
+div,
+span,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+em,
+img,
+strong,
+sub,
+sup,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+table,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
 }
-html, body{
+
+html,
+body {
   position: relative;
 }
-ul,li{
-    list-style:none;
+
+ul,
+li {
+  list-style: none;
 }
-a{
-    color:#333;
-    text-decoration: none;
+
+a {
+  color: #333;
+  text-decoration: none;
 }
+
 a:link,
 a:visited,
 a:hover,
-a:active{
-    color:#333;
+a:active {
+  color: #333;
 }
 
- // 路由激活样式
- .router-link-exact-active {
+// 路由激活样式
+.router-link-exact-active {
   p {
     color: #ab956d !important;
   }
 }
-

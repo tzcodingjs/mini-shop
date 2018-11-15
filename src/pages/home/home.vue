@@ -1,30 +1,23 @@
 <template>
-  <div :class="$style.container">
-     <myHeader/>
-     <myFooter/>
+  <div>
+    <myHeader />
+    <hSlider />
+    <hPanel />
+    <myFooter />
   </div>
 </template>
 
 <script>
-import myHeader from '@/components/header/header.vue'
-import myFooter from '@/components/footer/footer.vue'
+import myHeader from "@/components/public/header.vue";
+import hSlider from "./components/hslider.vue";
+import hPanel from "./components/hpanel.vue";
+import myFooter from "@/components/public/footer.vue";
 export default {
-  components:{
+  components: {
     myHeader,
+    hSlider,
+    hPanel,
     myFooter
-  },
-  data () {
-    return {
-
-    };
   }
-}
-
+};
 </script>
-<style lang='scss' module>
-@import '@/assets/css/layout.scss';
-.container{
-  @include flex;
-
-}
-</style>

@@ -31,7 +31,7 @@ export default {
   position: fixed;
   width: 100%;
   bottom: 0;
-  height: rem(90);
+  height:90px;
   background: #f5f5f5;
   align-items: center;
   .item {
@@ -61,7 +61,7 @@ export default {
       background-size: 40px 40px;
     }
     p {
-      font-size: rem(24);
+      font-size:24px;
       color: #989898;
     }
   }

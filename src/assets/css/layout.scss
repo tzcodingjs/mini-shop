@@ -1,11 +1,5 @@
 @charset 'utf-8';
 
-// 单位转换函数
-@function rem($px){
-	@return $px*320/$designWidth/20 + rem;
-}
-$designWidth : 750;
-
 // 布局函数
 @mixin flex($direction:column,$inline:block){
   display:if($inline==block,flex,inline-flex);
