@@ -5,7 +5,6 @@ html,
 body,
 div,
 span,
-iframe,
 h1,
 h2,
 h3,
@@ -35,19 +34,21 @@ form,
 label,
 table,
 tbody,
-tfoot,
 thead,
 tr,
 th,
 td {
   margin: 0;
   padding: 0;
-  font-size: 100%;
 }
 
 html,
 body {
   position: relative;
+  -webkit-text-size-adjust: 100%;//防止文字自动调整大小
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+  font-size: 100%;
+  -webkit-overflow-scrolling:touch//解决ios默认滑动卡顿情况
 }
 
 ul,
@@ -58,6 +59,7 @@ li {
 a {
   color: #333;
   text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 a:link,
@@ -65,6 +67,11 @@ a:visited,
 a:hover,
 a:active {
   color: #333;
+}
+
+// 全局隐藏滚动条
+#app::-webkit-scrollbar {
+  display: none;
 }
 
 // 路由激活样式

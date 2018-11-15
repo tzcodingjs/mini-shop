@@ -49,6 +49,7 @@ export default {
 </script>
 <style lang='scss' module>
 .panel {
+  width:100%;
   .title {
     font-size: 32px;
     text-align: center;

@@ -29,6 +29,7 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  // 配置px2rem
   const px2remLoader = {
     loader:'px2rem-loader',
     options: {
@@ -38,6 +39,7 @@ exports.cssLoaders = function (options) {
   }
 
   // generate loader string to be used with extract text plugin
+  //配置px2rem自动转换项目中px单位
   function generateLoaders (loader, loaderOptions) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader,px2remLoader] : [cssLoader,px2remLoader]
 

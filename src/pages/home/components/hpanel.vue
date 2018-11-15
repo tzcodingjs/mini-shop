@@ -1,6 +1,7 @@
 <template>
   <div>
     <panel title="精选主题">
+
       <!-- 插入自定义内容 -->
       <div :class="$style.theme">
         <div :class="$style.themeItem">
@@ -20,13 +21,7 @@
         </div>
       </div>
     </panel>
-    <panel title="最近新品"
-    :products="productsRecent"
-    :listClass="$style.list"
-    :itemClass="$style.item"
-    :imgClass="$style.img"
-    :titleClass="$style.title"
-    :priceClass="$style.price" />
+    <panel title="最近新品" :products="productsRecent" :listClass="$style.list" :itemClass="$style.item" :imgClass="$style.img" :titleClass="$style.title" :priceClass="$style.price" />
   </div>
 </template>
 
@@ -43,19 +38,19 @@ export default {
     return {
       productsRecent: [
         {
-          id:'1',
+          id: "1",
           imgSrc: t1,
           title: "锈色瓜子",
           price: "0.01"
         },
         {
-          id:'2',
+          id: "2",
           imgSrc: t2,
           title: "锈色瓜子",
           price: "0.01"
         },
         {
-          id:'3',
+          id: "3",
           imgSrc: t3,
           title: "锈色瓜子",
           price: "0.01"
@@ -69,24 +64,21 @@ export default {
 @import "@/assets/css/layout.scss";
 .theme {
   @include flex($direction: row);
-  align-content: space-between;
+  justify-content: space-between;
   .theme-item {
-    display: flex;
     height: 375px;
-    width: 50%;
     border-bottom: 4px solid #fff;
-    position: relative;
     box-sizing: border-box;
     &:first-child {
       border-right: 4px solid #fff;
     }
-    &.big {
-      width: 100%;
+    img {
+     display: block;
+     height: 100%;
     }
-  }
-  img{
-    width:100%;
-    height:100%;
+    &.big img {
+      width:100vw;
+    }
   }
 }
 .list {
