@@ -14,10 +14,7 @@ export default new Router({
   routes: [{
       path: '/',
       name: 'Home',
-      components: {
-        default: Home,
-        theme: Theme
-      }
+      component:Home
     },
     {
       path: '/category',
