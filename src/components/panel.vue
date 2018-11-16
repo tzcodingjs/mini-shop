@@ -48,14 +48,8 @@ export default {
 };
 </script>
 <style lang='scss' module>
-.panel {
-  width:100%;
-  .title {
-    font-size: 32px;
-    text-align: center;
-    color: #ab956d;
-    background: #fff;
-    padding: 20px 0;
-  }
+@import '@/assets/css/layout.scss';
+.panel{
+  @include panel;
 }
 </style>
