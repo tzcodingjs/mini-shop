@@ -9,7 +9,6 @@
 
 // 通用模块组件样式
 @mixin panel($color:#ab956d,$padding:20px 0){
-  .panel {
     width:100%;
     .title {
       font-size: 32px;
@@ -18,5 +17,4 @@
       background: #fff;
       padding: $padding;
     }
-  }
 }

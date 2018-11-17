@@ -7,6 +7,7 @@ const sourceMapEnabled = isProduction
   : config.dev.cssSourceMap
 
 module.exports = {
+  // css模块化
   cssModules: {
     localIdentName: '[name]---[local]---[hash:base64:5]',
     camelCase: true
