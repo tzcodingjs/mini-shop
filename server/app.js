@@ -16,7 +16,7 @@ const dbConfig = require('./dbs/config.js')
 // 引入接口
 const banner = require('./api/banner.js')
 
-const host = process.env.HOST || '192.168.0.103'
+const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
 // 错误处理

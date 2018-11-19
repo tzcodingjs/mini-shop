@@ -18,6 +18,17 @@ export default {
     hSlider,
     hPanel,
     myFooter
+  },
+  created() {
+    // 主页数据请求
+    this.axios
+      .get("api/banner")
+      .then(function(response) {
+        console.log(response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 };
 </script>

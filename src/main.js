@@ -3,6 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
+
+// 全局可以访问axios
+Vue.prototype.axios = axios
+
 
 Vue.config.productionTip = false
 
