@@ -5,6 +5,7 @@ import Category from '@/pages/category/category.vue'
 import Cart from '@/pages/cart/cart.vue'
 import Personal from '@/pages/personal/personal.vue'
 import Theme from '@/pages/theme/theme.vue'
+import Detail from '@/pages/detail/detail.vue'
 // 重置样式
 import '../assets/css/reset.scss'
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/theme',
       name: 'Theme',
       component: Theme
+    },
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail
     }
   ]
 })

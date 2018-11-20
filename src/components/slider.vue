@@ -3,8 +3,8 @@
     <swiper :options="options">
       <swiper-slide v-for="(item,idx) in items" :key="idx">
         <!-- 图片 -->
-        <router-link :to="item.href">
-          <img :src="item.imgSrc" :alt="item.alt" class="img">
+        <router-link :to="{ name:'Detail',params:{ id:item.id }}">
+          <img :src="baseUrl + item.imgSrc" :alt="item.alt" class="img">
         </router-link>
       </swiper-slide>
       <!-- 分页器选项 -->
@@ -21,6 +21,11 @@ export default {
   components: {
     swiper,
     swiperSlide
+  },
+  data() {
+    return {
+      baseUrl: this.baseUrl
+    };
   },
   props: {
     options: {

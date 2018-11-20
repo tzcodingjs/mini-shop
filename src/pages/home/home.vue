@@ -1,7 +1,7 @@
 <template>
   <div>
     <myHeader />
-    <hSlider />
+    <hSlider :items="items"/>
     <hPanel />
     <myFooter />
   </div>
@@ -19,12 +19,17 @@ export default {
     hPanel,
     myFooter
   },
+  data(){
+    return {
+      items:[]
+    }
+  },
   created() {
-    // 主页数据请求
+    // 主页banner数据请求
     this.axios
       .get("api/banner")
-      .then(function(response) {
-        console.log(response.data);
+      .then((response) => {
+        this.items = response.data.banner
       })
       .catch(function(error) {
         console.log(error);
