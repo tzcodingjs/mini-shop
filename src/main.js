@@ -7,7 +7,6 @@ import axios from 'axios'
 
 // 全局可以访问axios
 Vue.prototype.axios = axios
-Vue.prototype.baseUrl = "http://127.0.0.1:3000/images"
 
 Vue.config.productionTip = false
 

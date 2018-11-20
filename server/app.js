@@ -13,8 +13,10 @@ const logger = require('koa-logger')
 const mongoose = require('mongoose')
 // 数据库相关配置
 const dbConfig = require('./dbs/config.js')
+
 // 引入接口
 const banner = require('./api/banner.js')
+const product = require('./api/product.js')
 
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
@@ -51,6 +53,7 @@ app.use(async (ctx, next) => {
 
 // 路由
 app.use(banner.routes()).use(banner.allowedMethods())
+app.use(product.routes()).use(product.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
