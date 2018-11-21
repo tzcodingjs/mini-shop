@@ -1,15 +1,23 @@
 // banner 模型
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema
-const BannerSchema = new Schema({
-  id:{
-    type:String,
-    reqiure:true
+const Sequelize = require('sequelize');
+const sequelize = require('../config.js').sequelize
+const Banner = sequelize.define('Banner', {
+  id: {
+    type: Sequelize.STRING(),
+    primaryKey: true
   },
-  imgSrc:{
-    type:String,
-    reqiure:true
+  name: {
+    type: Sequelize.STRING(),
+  },
+  description:{
+    type: Sequelize.STRING(),
+  },
+  delete_time:{
+    type: Sequelize.STRING(),
+  },
+  update_time:{
+    type: Sequelize.STRING(),
   }
-})
+},{timestamps: false})
 
-module.exports = mongoose.model('Banner',BannerSchema)
+module.exports = Banner

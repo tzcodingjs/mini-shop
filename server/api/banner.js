@@ -9,7 +9,7 @@ let router = new Router({
 })
 
 router.get('/', async (ctx,next)=>{
-  let banner = await Banner.find({})
+  let banner = await Banner.findAll({})
   utils.preUrl(banner)
     ctx.body = {
       banner

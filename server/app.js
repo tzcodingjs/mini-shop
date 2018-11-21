@@ -10,9 +10,9 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
 // 引入mongoose
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 // 数据库相关配置
-const dbConfig = require('./dbs/config.js')
+// const dbConfig = require('./dbs/config.js')
 
 // 引入接口
 const banner = require('./api/banner.js')
@@ -33,9 +33,9 @@ app.use(json())
 app.use(logger())
 
 // 连接数据库
-mongoose.connect(dbConfig.dbs,{
-  useNewUrlParser:true
-})
+// mongoose.connect(dbConfig.dbs,{
+//   useNewUrlParser:true
+// })
 
 // 静态资源处理，配置路径
 app.use(require('koa-static')(__dirname + '/public'))

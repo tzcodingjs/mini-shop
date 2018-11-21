@@ -10,10 +10,10 @@ const ThemeSchema = new Schema({
     type: String,
     require: true
   },
-  products:{
-    type:Array,
-    require:true
-  }
+  products:[{
+    type:Schema.Types.Number,
+    ref:'Products'
+  }]
 })
 
 module.exports = mongoose.model('Themes',ThemeSchema)
