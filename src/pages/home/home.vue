@@ -1,8 +1,8 @@
 <template>
   <div>
     <myHeader />
-    <hSlider :items="items"/>
-    <hPanel />
+    <hSlider :items="items" />
+    <hPanel :productsRecent="productsRecent" />
     <myFooter />
   </div>
 </template>
@@ -19,21 +19,39 @@ export default {
     hPanel,
     myFooter
   },
-  data(){
+  data() {
     return {
-      items:[]
+      items: [],
+      productsRecent: []
+    };
+  },
+  methods: {
+    getBanner:function(){
+      let _this = this
+      _this.axios
+        .get("api/banner")
+        .then(response => {
+          _this.items = response.data.banner;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    getRecent:function(){
+      let _this = this
+      _this.axios
+        .get("api/product")
+        .then(response => {
+          _this.productsRecent = response.data.products;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   },
   created() {
-    // 主页banner数据请求
-    this.axios
-      .get("api/banner")
-      .then((response) => {
-        this.items = response.data.banner
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    this.getBanner();
+    this.getRecent();
   }
 };
 </script>

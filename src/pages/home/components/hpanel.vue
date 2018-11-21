@@ -5,23 +5,29 @@
       <!-- 插入自定义内容 -->
       <div :class="$style.theme">
         <div :class="$style.themeItem">
-          <router-link to="/">
+          <router-link :to="{name:'Theme',params:{id:'001'}}">
             <img src="../../../assets/images/test/1@theme.png" alt="theme">
           </router-link>
         </div>
         <div :class="$style.themeItem">
-          <router-link to="/">
+          <router-link :to="{name:'Theme',params:{id:'002'}}">
             <img src="../../../assets/images/test/2@theme.png" alt="theme">
           </router-link>
         </div>
         <div :class="[$style.themeItem,$style.big]">
-          <router-link to="/">
+          <router-link :to="{name:'Theme',params:{id:'003'}}">
             <img src="../../../assets/images/test/3@theme.png" alt="theme">
           </router-link>
         </div>
       </div>
     </panel>
-    <panel title="最近新品" :products="productsRecent" :listClass="$style.list" :itemClass="$style.item" :imgClass="$style.img" :titleClass="$style.title" :priceClass="$style.price" />
+    <panel title="最近新品"
+    :products="productsRecent"
+    :listClass="$style.list"
+    :itemClass="$style.item"
+    :imgClass="$style.img"
+    :titleClass="$style.title"
+    :priceClass="$style.price" />
   </div>
 </template>
 
@@ -34,29 +40,11 @@ export default {
   components: {
     panel
   },
-  data() {
-    return {
-      productsRecent: [
-        {
-          id: "1",
-          imgSrc: t1,
-          title: "锈色瓜子",
-          price: "0.01"
-        },
-        {
-          id: "2",
-          imgSrc: t2,
-          title: "锈色瓜子",
-          price: "0.01"
-        },
-        {
-          id: "3",
-          imgSrc: t3,
-          title: "锈色瓜子",
-          price: "0.01"
-        }
-      ]
-    };
+  props:{
+    productsRecent:{
+      type:Array,
+      default:()=>{return []}
+    }
   }
 };
 </script>

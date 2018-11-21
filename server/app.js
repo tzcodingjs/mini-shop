@@ -17,6 +17,7 @@ const dbConfig = require('./dbs/config.js')
 // 引入接口
 const banner = require('./api/banner.js')
 const product = require('./api/product.js')
+const theme = require('./api/theme.js')
 
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
@@ -54,6 +55,7 @@ app.use(async (ctx, next) => {
 // 路由
 app.use(banner.routes()).use(banner.allowedMethods())
 app.use(product.routes()).use(product.allowedMethods())
+app.use(theme.routes()).use(theme.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

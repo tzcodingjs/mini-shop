@@ -4,7 +4,7 @@
     <slot></slot>
     <div :class="listClass">
       <div :class="itemClass" v-for="(item,idx) in products" :key="idx">
-        <router-link :to="item.id">
+        <router-link :to="{name:'Detail',params:{id:item.id}}">
           <img :src="item.imgSrc" alt="products" :class="imgClass">
           <p :class="titleClass">{{ item.title }}</p>
           <p :class="priceClass" v-if="item.price">{{ item.price }}</p>
