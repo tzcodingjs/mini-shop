@@ -2,7 +2,9 @@
 const Router = require('koa-router')
 // 引入用户模型
 const Themes = require('../dbs/models/themes.js')
-// const Products = require('../dbs/models/products.js')
+const Image = require('../dbs/models/images.js')
+const Products = require('../dbs/models/products.js')
+const Theme_product = require('../dbs/models/theme_products.js')
 const utils = require('./utils/utils.js')
 
 let router = new Router({
@@ -10,7 +12,13 @@ let router = new Router({
 })
 
 router.get('/', async (ctx,next)=>{
-  let themes = await Themes.findOne({'themesId':'001'}).populate('products','id')
+  let themes = await Themes.findAll({
+    include:[{
+      model:Theme_product
+    },{
+      model:Image
+    }]
+  })
   // utils.preUrl(themes)
     ctx.body = {
       themes

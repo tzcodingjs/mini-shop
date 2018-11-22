@@ -5,17 +5,17 @@
       <!-- 插入自定义内容 -->
       <div :class="$style.theme">
         <div :class="$style.themeItem">
-          <router-link :to="{name:'Theme',params:{id:'001'}}">
+          <router-link :to="{name:'Theme',params:{id:'1'}}">
             <img src="../../../assets/images/test/1@theme.png" alt="theme">
           </router-link>
         </div>
         <div :class="$style.themeItem">
-          <router-link :to="{name:'Theme',params:{id:'002'}}">
+          <router-link :to="{name:'Theme',params:{id:'2'}}">
             <img src="../../../assets/images/test/2@theme.png" alt="theme">
           </router-link>
         </div>
         <div :class="[$style.themeItem,$style.big]">
-          <router-link :to="{name:'Theme',params:{id:'003'}}">
+          <router-link :to="{name:'Theme',params:{id:'3'}}">
             <img src="../../../assets/images/test/3@theme.png" alt="theme">
           </router-link>
         </div>

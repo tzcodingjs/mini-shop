@@ -67,9 +67,15 @@ export default {
     };
   },
   methods: {
+    getCategory:function(){
+
+    },
     selectItem: function(e, idx) {
       this.init = idx;
     }
+  },
+  created(){
+    this.getCategory()
   }
 };
 </script>

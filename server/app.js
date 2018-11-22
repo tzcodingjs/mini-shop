@@ -9,11 +9,6 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-// 引入mongoose
-// const mongoose = require('mongoose')
-// 数据库相关配置
-// const dbConfig = require('./dbs/config.js')
-
 // 引入接口
 const banner = require('./api/banner.js')
 const product = require('./api/product.js')

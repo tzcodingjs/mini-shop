@@ -1,19 +1,31 @@
 // theme模型
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema
-const ThemeSchema = new Schema({
+const Sequelize = require('sequelize');
+const sequelize = require('../config.js')
+const Image = require('./images.js')
+const Theme_product = require('./theme_products.js')
+const Theme = sequelize.define('Theme',{
   id: {
-    type: String,
-    require: true
+    type: Sequelize.INTEGER(),
+    primaryKey: true
   },
-  imgSrc: {
-    type: String,
-    require: true
+  name: {
+    type: Sequelize.STRING()
   },
-  products:[{
-    type:Schema.Types.Number,
-    ref:'Products'
-  }]
+  description:{
+    type: Sequelize.STRING()
+  },
+  topic_img_id:{
+    type: Sequelize.INTEGER(),
+  },
+  head_img_id:{
+    type:Sequelize.INTEGER()
+  }
+}, {
+  timestamps: false,
+  freezeTableName: true
 })
 
-module.exports = mongoose.model('Themes',ThemeSchema)
+Theme.belongsTo(Image,{foreignKey:'head_img_id',targetKey:'id'})
+Theme.hasMany(Theme_product,{foreignKey:'id',targetKey:'theme_id'})
+
+module.exports = Theme

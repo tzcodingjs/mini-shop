@@ -13,4 +13,4 @@ const sequelize = new Sequelize('minishop', 'root', '123456', {
     timezone: '+08:00'
 });
 
-module.exports = {Sequelize,sequelize}
+module.exports = sequelize

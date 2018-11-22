@@ -4,7 +4,7 @@
       <swiper-slide v-for="(item,idx) in items" :key="idx">
         <!-- 图片 -->
         <router-link :to="{ name:'Detail',params:{ id:item.id }}">
-          <img :src="item.imgSrc" :alt="item.alt" class="img">
+          <img :src="item.Image.url" :alt="item.alt" class="img">
         </router-link>
       </swiper-slide>
       <!-- 分页器选项 -->

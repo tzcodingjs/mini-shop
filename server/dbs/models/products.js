@@ -1,34 +1,33 @@
-// products 模型
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema
-const ProductsSchema = new Schema({
-  _id:{
-    type:Number
+// product 模型
+const Sequelize = require('sequelize');
+const sequelize = require('../config.js')
+const Image = require('./images.js')
+
+const Product = sequelize.define('Product', {
+  id: {
+    type: Sequelize.INTEGER(),
+    primaryKey: true
   },
-  id:{
-    type:Number,
-    reqiure:true
+  name: {
+    type: Sequelize.STRING()
   },
-  imgSrc:{
-    type:String,
-    reqiure:true
+  price: {
+    type: Sequelize.FLOAT()
   },
-  stock:{
-    type:Number,
-    reqiure:true
+  stock: {
+    type: Sequelize.INTEGER()
   },
-  price:{
-    type:Number,
-    reqiure:true
+  category_id: {
+    type: Sequelize.INTEGER()
   },
-  title:{
-    type:String,
-    reqiure:true
-  },
-  category_id:{
-    type:String,
-    reqiure:true
+  main_img_url: {
+    type: Sequelize.STRING(),
   }
+}, {
+  timestamps: false,
+  freezeTableName: true
 })
 
-module.exports = mongoose.model('Products',ProductsSchema)
+Product.belongsTo(Image,{foreignKey:'img_id',targetKey:'id'})
+
+module.exports = Product

@@ -6,8 +6,8 @@ const utils = {
       return
     }
     for (let value of obj) {
-      if (value && value.imgSrc) {
-        value.imgSrc = baseUrl + value.imgSrc
+      if (value && value.Image) {
+        value.Image.url = baseUrl + value.Image.url
       }
     }
     return obj

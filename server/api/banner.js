@@ -2,6 +2,7 @@
 const Router = require('koa-router');
 // 引入用户模型
 const Banner = require('../dbs/models/banners.js')
+const Image = require('../dbs/models/images.js')
 const utils = require('./utils/utils.js')
 
 let router = new Router({
@@ -9,7 +10,11 @@ let router = new Router({
 })
 
 router.get('/', async (ctx,next)=>{
-  let banner = await Banner.findAll({})
+  let banner = await Banner.findAll({
+    include:[{
+      model:Image
+    }]
+  })
   utils.preUrl(banner)
     ctx.body = {
       banner

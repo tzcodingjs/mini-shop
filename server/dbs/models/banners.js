@@ -1,23 +1,23 @@
 // banner 模型
-const Sequelize = require('sequelize');
-const sequelize = require('../config.js').sequelize
+const Sequelize = require('sequelize')
+const sequelize = require('../config.js')
+const Image = require('./images.js')
 const Banner = sequelize.define('Banner', {
   id: {
-    type: Sequelize.STRING(),
+    type: Sequelize.INTEGER(),
     primaryKey: true
   },
-  name: {
-    type: Sequelize.STRING(),
+  productsId: {
+    type: Sequelize.INTEGER(),
   },
-  description:{
-    type: Sequelize.STRING(),
-  },
-  delete_time:{
-    type: Sequelize.STRING(),
-  },
-  update_time:{
-    type: Sequelize.STRING(),
+  img_id: {
+    type: Sequelize.INTEGER(),
   }
-},{timestamps: false})
+}, {
+  timestamps: false,
+  freezeTableName: true
+})
+
+Banner.belongsTo(Image,{foreignKey:'img_id',targetKey:'id'})
 
 module.exports = Banner
