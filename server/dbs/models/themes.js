@@ -2,6 +2,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config.js')
 const Image = require('./images.js')
+const Product = require('./products.js')
 const Theme_product = require('./theme_products.js')
 const Theme = sequelize.define('Theme',{
   id: {
@@ -26,6 +27,6 @@ const Theme = sequelize.define('Theme',{
 })
 
 Theme.belongsTo(Image,{foreignKey:'head_img_id',targetKey:'id'})
-Theme.hasMany(Theme_product,{foreignKey:'id',targetKey:'theme_id'})
+Theme.hasMany(Theme_product,{as:'theme_products',foreignKey:'theme_id'})
 
 module.exports = Theme

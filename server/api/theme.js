@@ -8,21 +8,24 @@ const Theme_product = require('../dbs/models/theme_products.js')
 const utils = require('./utils/utils.js')
 
 let router = new Router({
-  prefix:'/theme'
+  prefix: '/theme'
 })
 
-router.get('/', async (ctx,next)=>{
+router.get('/', async (ctx, next) => {
   let themes = await Themes.findAll({
-    include:[{
-      model:Theme_product
-    },{
-      model:Image
-    }]
+    include: [{
+        model: Image,
+      },{
+        model:Theme_product,
+        as:'theme_products'
+      }
+    ],
+    attributes:{exclude:['head_img_id']}
   })
   // utils.preUrl(themes)
-    ctx.body = {
-      themes
-    }
+  ctx.body = {
+    themes
+  }
 })
 
 module.exports = router

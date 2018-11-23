@@ -2,6 +2,8 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config.js')
 const Image = require('./images.js')
+const Theme = require('./themes.js')
+const Thmem_products = require('./theme_products.js')
 
 const Product = sequelize.define('Product', {
   id: {
