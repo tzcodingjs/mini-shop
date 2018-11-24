@@ -27,6 +27,9 @@ const Theme = sequelize.define('Theme',{
 })
 
 Theme.belongsTo(Image,{foreignKey:'head_img_id',targetKey:'id'})
-Theme.hasMany(Theme_product,{as:'theme_products',foreignKey:'theme_id'})
+Theme.belongsToMany(Product,{
+  through:Theme_product,
+  foreignKey:'theme_id'
+})
 
 module.exports = Theme

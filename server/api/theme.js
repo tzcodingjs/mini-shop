@@ -15,12 +15,17 @@ router.get('/', async (ctx, next) => {
   let themes = await Themes.findAll({
     include: [{
         model: Image,
-      },{
-        model:Theme_product,
-        as:'theme_products'
+      },
+      {
+        model: Products,
       }
     ],
-    attributes:{exclude:['head_img_id']}
+    where:{
+      id:1
+    },
+    attributes: {
+      exclude: ['head_img_id']
+    }
   })
   // utils.preUrl(themes)
   ctx.body = {
