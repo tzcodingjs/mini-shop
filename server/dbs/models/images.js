@@ -1,4 +1,4 @@
-// image 模型
+/* // image 模型
 const Sequelize = require('sequelize');
 const sequelize = require('../config.js')
 
@@ -16,3 +16,4 @@ const Image = sequelize.define('Image', {
 })
 
 module.exports = Image
+ */

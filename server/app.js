@@ -50,7 +50,7 @@ app.use(async (ctx, next) => {
 // 路由
 app.use(banner.routes()).use(banner.allowedMethods())
 app.use(product.routes()).use(product.allowedMethods())
-app.use(theme.routes()).use(theme.allowedMethods())
+// app.use(theme.routes()).use(theme.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

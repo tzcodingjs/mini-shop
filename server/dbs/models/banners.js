@@ -1,4 +1,4 @@
-// banner 模型
+/* // banner 模型
 const Sequelize = require('sequelize')
 const sequelize = require('../config.js')
 const Image = require('./images.js')
@@ -21,3 +21,4 @@ const Banner = sequelize.define('Banner', {
 Banner.belongsTo(Image,{foreignKey:'img_id',targetKey:'id'})
 
 module.exports = Banner
+ */
