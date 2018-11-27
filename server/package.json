@@ -15,6 +15,7 @@
     "babel-register": "^6.26.0",
     "debug": "^2.6.3",
     "ejs": "~2.3.3",
+    "event-stream": "^4.0.1",
     "koa": "^2.2.0",
     "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
