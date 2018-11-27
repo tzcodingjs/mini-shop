@@ -55,4 +55,4 @@ app.on('error', (err, ctx) => {
 
 app.listen(port, host)
 
-module.exports = app
+export default app

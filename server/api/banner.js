@@ -1,9 +1,7 @@
 // banner接口
-const Router = require('koa-router');
+import Router from 'koa-router'
 // 引入用户模型
-const Banner = require('../dbs/models/banners.js')
-const Image = require('../dbs/models/images.js')
-const utils = require('./utils/utils.js')
+import utils from './utils/utils.js'
 
 let router = new Router({
   prefix:'/banner'
@@ -21,5 +19,5 @@ router.get('/', async (ctx,next)=>{
     }
 })
 
-module.exports = router
+export default router
 

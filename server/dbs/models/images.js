@@ -1,19 +1,13 @@
 // image 模型
 
-
-const Image = sequelize.define('Image', {
-  id: {
-    type: Sequelize.INTEGER(),
-    primaryKey: true
-  },
-  url: {
-    type: Sequelize.STRING(),
-  }
-}, {
-  timestamps: false,
-  freezeTableName: true
-})
-
-module.exports = Image
-
-
+export default (sequelize, DataTypes) => {
+  return sequelize.define('image', {
+    id: {
+      type: Sequelize.INTEGER(),
+      primaryKey: true
+    },
+    url: {
+      type: Sequelize.STRING(),
+    }
+  })
+}
