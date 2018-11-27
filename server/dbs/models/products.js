@@ -2,23 +2,23 @@
 export default (sequelize, DataTypes) => {
   return sequelize.define('product', {
     id: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
       primaryKey: true
     },
     name: {
-      type: Sequelize.STRING()
+      type: DataTypes.STRING()
     },
     price: {
-      type: Sequelize.FLOAT()
+      type: DataTypes.FLOAT()
     },
     stock: {
-      type: Sequelize.INTEGER()
+      type: DataTypes.INTEGER()
     },
     category_id: {
-      type: Sequelize.INTEGER()
+      type: DataTypes.INTEGER()
     },
     main_img_url: {
-      type: Sequelize.STRING(),
+      type: DataTypes.STRING(),
     }
   })
 }

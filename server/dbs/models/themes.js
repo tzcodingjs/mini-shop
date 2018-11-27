@@ -2,20 +2,20 @@
 export default (sequelize, DataTypes) => {
   return sequelize.define('theme', {
     id: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
       primaryKey: true
     },
     name: {
-      type: Sequelize.STRING()
+      type: DataTypes.STRING()
     },
     description: {
-      type: Sequelize.STRING()
+      type: DataTypes.STRING()
     },
     topic_img_id: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
     },
     head_img_id: {
-      type: Sequelize.INTEGER()
+      type: DataTypes.INTEGER()
     }
   })
 }

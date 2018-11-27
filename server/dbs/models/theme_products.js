@@ -2,10 +2,10 @@
 export default (sequelize, DataTypes) => {
   return sequelize.define('theme_product', {
     theme_id: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
     },
     product_id: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
     }
   })
 }

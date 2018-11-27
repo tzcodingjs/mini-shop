@@ -3,11 +3,11 @@
 export default (sequelize, DataTypes) => {
   return sequelize.define('image', {
     id: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
       primaryKey: true
     },
     url: {
-      type: Sequelize.STRING(),
+      type: DataTypes.STRING(),
     }
   })
 }

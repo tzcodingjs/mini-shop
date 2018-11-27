@@ -2,14 +2,14 @@
 export default (sequelize, DataTypes) => {
   return sequelize.define('banner', {
     id: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
       primaryKey: true
     },
     productsId: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
     },
     img_id: {
-      type: Sequelize.INTEGER(),
+      type: DataTypes.INTEGER(),
     }
   })
 }

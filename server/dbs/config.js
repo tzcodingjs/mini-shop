@@ -20,8 +20,9 @@ export default {
   // 数据表全局配置
   define:{
     freezeTableName:true,
-    timestamps:true,
-    paranoid:false
+    timestamps:false,
+    paranoid:false,
+    operatorsAliases: false
   },
   // 时区
   timezone: '+08:00'

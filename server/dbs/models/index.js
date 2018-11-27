@@ -9,7 +9,7 @@ export const Banner = sequelize.import(__dirname + '/banners.js')
 export const Image = sequelize.import(__dirname + '/images.js')
 export const Product = sequelize.import(__dirname + '/products.js')
 export const Theme_product = sequelize.import(__dirname + '/theme_products.js')
-export const Theme = sequelize.import(__dirname + './themes.js')
+export const Theme = sequelize.import(__dirname + '/themes.js')
 
 // 表间关联关系
 Banner.belongsTo(Image, {
