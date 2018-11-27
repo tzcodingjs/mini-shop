@@ -1,8 +1,4 @@
-/* // theme_products 模型
-const Sequelize = require('sequelize')
-const sequelize = require('../config.js')
-// const Product = require('./products.js')
-// const Theme = require('./themes.js')
+// theme_products 模型
 const Theme_product = sequelize.define('theme_product', {
   theme_id: {
     type: Sequelize.INTEGER(),
@@ -15,5 +11,6 @@ const Theme_product = sequelize.define('theme_product', {
   freezeTableName: true
 })
 
+
 module.exports = Theme_product
- */
+

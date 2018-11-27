@@ -1,4 +1,4 @@
-/* // product接口
+// product接口
 const Router = require('koa-router');
 // 引入用户模型
 const Products = require('../dbs/models/products.js')
@@ -23,20 +23,4 @@ router.get('/', async (ctx,next)=>{
 })
 
 module.exports = router
- */
-const Router = require('koa-router');
-const query = require('../dbs/config.js')
 
-let router = new Router({
-  prefix:'/product'
-})
-
-router.get('/', async (ctx,next)=>{
-  let sql = 'SELECT p.id, p.name, p.price, p.img_id, i.url FROM product as p JOIN image as i ON p.img_id = i.id LIMIT 0,10'
-  let products = await query(sql)
-    ctx.body = {
-      products
-    }
-})
-
-module.exports = router

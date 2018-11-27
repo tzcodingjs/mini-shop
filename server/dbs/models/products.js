@@ -1,9 +1,4 @@
-/* // product 模型
-const Sequelize = require('sequelize');
-const sequelize = require('../config.js')
-const Image = require('./images.js')
-const Theme = require('./themes.js')
-const Theme_product = require('./theme_products.js')
+// product 模型
 
 const Product = sequelize.define('Product', {
   id: {
@@ -31,11 +26,7 @@ const Product = sequelize.define('Product', {
 })
 
 Product.belongsTo(Image,{foreignKey:'img_id',targetKey:'id'})
-Product.belongsToMany(Theme,{as:'t',
-  through:Theme_product,
-  foreignKey:'product_id'
-})
+Product.belongsToMany(Theme,{through:theme_product,foreignKey:'product_id'})
 
 
 module.exports = Product
- */

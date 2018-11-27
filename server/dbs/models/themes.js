@@ -1,9 +1,4 @@
-/* // theme模型
-const Sequelize = require('sequelize');
-const sequelize = require('../config.js')
-const Image = require('./images.js')
-const Product = require('./products.js')
-const Theme_product = require('./theme_products.js')
+// theme模型
 const Theme = sequelize.define('Theme',{
   id: {
     type: Sequelize.INTEGER(),
@@ -27,6 +22,6 @@ const Theme = sequelize.define('Theme',{
 })
 
 Theme.belongsTo(Image,{foreignKey:'head_img_id',targetKey:'id'})
-Theme.belongsToMany(Product,{through:Theme_product,foreignKey:'theme_id'})
+Theme.belongsToMany(Product,{through:theme_product,foreignKey:'theme_id'})
 
-module.exports = Theme */
+module.exports = Theme

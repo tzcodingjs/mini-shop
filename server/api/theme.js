@@ -1,4 +1,4 @@
-/* // theme接口
+// theme接口
 const Router = require('koa-router')
 // 引入用户模型
 const Themes = require('../dbs/models/themes.js')
@@ -16,13 +16,11 @@ router.get('/', async (ctx, next) => {
     include: [{
         model: Image,
       },
-      {
-        model: Theme_product,
-        as:'tp'
-      },
+      // {
+      //   model: Theme_product,
+      // },
       {
         model: Products,
-        as:'p'
       }
     ],
     attributes: {
@@ -36,4 +34,4 @@ router.get('/', async (ctx, next) => {
 })
 
 module.exports = router
- */
+

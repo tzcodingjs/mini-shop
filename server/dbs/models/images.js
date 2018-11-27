@@ -1,6 +1,5 @@
-/* // image 模型
-const Sequelize = require('sequelize');
-const sequelize = require('../config.js')
+// image 模型
+
 
 const Image = sequelize.define('Image', {
   id: {
@@ -16,4 +15,5 @@ const Image = sequelize.define('Image', {
 })
 
 module.exports = Image
- */
+
+

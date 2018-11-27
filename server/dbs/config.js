@@ -1,45 +1,28 @@
-/* // 引入orm模型
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('minishop', 'root', '123456', {
-    host: '127.0.0.1',
-    dialect: 'mysql',
-    operatorsAliases: false,
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    },
-    timezone: '+08:00'
-});
-
-module.exports = sequelize */
-
-const mysql = require('mysql')
-const pool = mysql.createPool({
-  host: '127.0.0.1',
-  user: 'root',
+// sequelize配置文件
+export default {
+  // 哪个数据库
+  database: 'minishop',
+  // 用户名
+  username: 'root',
+  // 密码
   password: '123456',
-  database: 'minishop'
-})
-
-let query = function(sql, values){
-  return new Promise((resolve,reject) => {
-    pool.getConnection(function(err, connection){
-      if(err){
-        reject(err)
-      }else{
-        connection.query(sql,values,(err, rows) => {
-          if(err){
-            reject(err)
-          }else{
-            resolve(rows)
-          }
-          connection.release()
-        })
-      }
-    })
-  })
+  // 地址
+  host: '127.0.0.1',
+  // 使用什么数据库
+  dialect: 'mysql',
+  // 连接池
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  },
+  // 数据表全局配置
+  define:{
+    freezeTableName:true,
+    timestamps:true,
+    paranoid:false
+  },
+  // 时区
+  timezone: '+08:00'
 }
-
-module.exports = query

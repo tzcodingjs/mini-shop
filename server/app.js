@@ -1,19 +1,19 @@
 
 // koa入口文件
-const Koa = require('koa')
-const app = new Koa()
-const views = require('koa-views')
-const json = require('koa-json')
-const onerror = require('koa-onerror')
+import Koa from 'koa'
+import views from 'koa-views'
+import json from 'koa-json'
+import onerror from 'koa-onerror'
 // 处理与post相关的请求
-const bodyparser = require('koa-bodyparser')
-const logger = require('koa-logger')
+import bodyparser from 'koa-bodyparser'
+import logger from 'koa-logger'
 
 // 引入接口
-const banner = require('./api/banner.js')
-const product = require('./api/product.js')
-const theme = require('./api/theme.js')
+import banner from './api/banner.js'
+import product from './api/product.js'
+import theme from './api/theme.js'
 
+const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
@@ -27,10 +27,6 @@ app.use(bodyparser({
 app.use(json())
 app.use(logger())
 
-// 连接数据库
-// mongoose.connect(dbConfig.dbs,{
-//   useNewUrlParser:true
-// })
 
 // 静态资源处理，配置路径
 app.use(require('koa-static')(__dirname + '/public'))
@@ -50,7 +46,7 @@ app.use(async (ctx, next) => {
 // 路由
 app.use(banner.routes()).use(banner.allowedMethods())
 app.use(product.routes()).use(product.allowedMethods())
-// app.use(theme.routes()).use(theme.allowedMethods())
+app.use(theme.routes()).use(theme.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
