@@ -1,12 +1,12 @@
 <template>
   <div>
     <myHeader />
-    <div :class="$style.container">
+    <div :class="$style.container" v-for="(item,idx) in products" :key="idx" >
       <div :class="$style.themeImg">
-        <img src="../../assets/images/test/1@theme-head.png" alt="theme">
+        <img :src="baseUrl + item.image.url" alt="theme">
       </div>
       <tpanel :class="$style.panel"
-      :products="products"
+      :products="item.products"
       :listClass="$style.list"
       :itemClass="$style.item"
       :imgClass="$style.img"
@@ -18,12 +18,10 @@
 </template>
 
 <script>
+import axios from 'axios'
 import myHeader from "@/components/public/header.vue";
 import tpanel from "@/components/panel.vue";
 import myFooter from "@/components/public/footer.vue";
-import t1 from "../../assets/images/test/product-cake-a@3.png";
-import t2 from "../../assets/images/test/product-dryfruit@4.png";
-import t3 from "../../assets/images/test/product-rice@7.png";
 export default {
   name: "Theme",
   components: {
@@ -33,31 +31,26 @@ export default {
   },
   data() {
     return {
-      products: [
-        {
-          id: "1",
-          imgSrc: t1,
-          title: "锈色瓜子",
-          price: "0.01"
-        },
-        {
-          id: "2",
-          imgSrc: t2,
-          title: "锈色瓜子",
-          price: "0.01"
-        },
-        {
-          id: "3",
-          imgSrc: t3,
-          title: "锈色瓜子",
-          price: "0.01"
-        }
-      ]
+      baseUrl:this.baseUrl,
+      products: []
     };
+  },
+  methods:{
+    getTheme:function(id){
+      let _this = this
+      axios.post('api/theme',{
+        id:id
+      }).then(function(response){
+        let data = response.data;
+        if(data.success == true){
+          _this.products = data.themes
+        }
+      })
+    }
   },
   created(){
     let id = this.$route.params.id;
-    console.log(id);
+    this.getTheme(id);
   }
 };
 </script>
@@ -75,7 +68,6 @@ export default {
     }
   }
   .panel {
-    @include panel;
     &>p {
       display: none;
     }

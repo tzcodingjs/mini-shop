@@ -4,7 +4,7 @@
       <swiper-slide v-for="(item,idx) in items" :key="idx">
         <!-- 图片 -->
         <router-link :to="{ name:'Detail',params:{ id:item.id }}">
-          <img :src="item.Image.url" :alt="item.alt" class="img">
+          <img :src="baseUrl + item.image.url" :alt="item.alt" class="img">
         </router-link>
       </swiper-slide>
       <!-- 分页器选项 -->
@@ -23,7 +23,9 @@ export default {
     swiperSlide
   },
   data() {
-    return {};
+    return {
+      baseUrl:this.baseUrl
+    };
   },
   props: {
     options: {

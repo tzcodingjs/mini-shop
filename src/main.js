@@ -3,10 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import axios from 'axios'
 
-// 全局可以访问axios
-Vue.prototype.axios = axios
+// 设置访问链接(临时)
+Vue.prototype.baseUrl = 'http://127.0.0.1:3000/images'
 
 Vue.config.productionTip = false
 

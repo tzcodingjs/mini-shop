@@ -5,6 +5,7 @@ import views from 'koa-views'
 import json from 'koa-json'
 import onerror from 'koa-onerror'
 // 处理与post相关的请求
+// import body from 'koa-body'
 import bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 
@@ -21,9 +22,8 @@ const port = process.env.PORT || 3000
 onerror(app)
 
 // 中间件
-app.use(bodyparser({
-  enableTypes:['json', 'form', 'text']
-}))
+app.use(bodyparser())
+// app.use(body())
 app.use(json())
 app.use(logger())
 

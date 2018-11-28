@@ -5,7 +5,7 @@
     <div :class="listClass">
       <div :class="itemClass" v-for="(item,idx) in products" :key="idx">
         <router-link :to="{name:'Detail',params:{id:item.id}}">
-          <img :src="item.Image.url" alt="products" :class="imgClass">
+          <img :src="baseUrl + item.image.url" alt="products" :class="imgClass">
           <p :class="titleClass">{{ item.name }}</p>
           <p :class="priceClass" v-if="item.price">{{ item.price }}</p>
         </router-link>
@@ -43,6 +43,11 @@ export default {
     },
     products: {
       type: Array
+    }
+  },
+  data(){
+    return {
+      baseUrl:this.baseUrl
     }
   }
 };
