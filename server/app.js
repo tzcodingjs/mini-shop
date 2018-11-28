@@ -13,6 +13,7 @@ import logger from 'koa-logger'
 import banner from './api/banner.js'
 import product from './api/product.js'
 import theme from './api/theme.js'
+import category from './api/category.js'
 
 const app = new Koa()
 const host = process.env.HOST || '127.0.0.1'
@@ -47,6 +48,7 @@ app.use(async (ctx, next) => {
 app.use(banner.routes()).use(banner.allowedMethods())
 app.use(product.routes()).use(product.allowedMethods())
 app.use(theme.routes()).use(theme.allowedMethods())
+app.use(category.routes()).use(category.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

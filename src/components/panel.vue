@@ -1,8 +1,10 @@
 <template>
   <div :class="$style.panel">
+    <!-- 小标题 -->
     <p :class="$style.title">{{ title }}</p>
     <slot></slot>
     <div :class="listClass">
+      <!-- 产品模块 -->
       <div :class="itemClass" v-for="(item,idx) in products" :key="idx">
         <router-link :to="{name:'Detail',params:{id:item.id}}">
           <img :src="baseUrl + item.image.url" alt="products" :class="imgClass">

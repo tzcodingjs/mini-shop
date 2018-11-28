@@ -1,31 +1,36 @@
 <template>
   <!-- 主容器 -->
   <div :class="$style.container">
-    <!-- 左侧菜单 -->
-    <div :class="$style.leftList">
-      <ul>
-        <li v-for="(list,idx) in listItem"
-        :key="idx"
-        :value="list.id"
-        @click="selectItem($event,idx)"
-        :class="{[$style.active]:idx == init}">{{ list.listTitle }}</li>
-      </ul>
-    </div>
-    <!-- 右侧详情内容 -->
-    <div :class="$style.rightBox">
-      <div :class="$style.headerImg">
-        <img src="../../../assets/images/test/category-cake.png" alt="headerimg">
+      <!-- 左侧菜单 -->
+      <div :class="$style.leftList">
+        <ul>
+          <li
+          v-for="(list,idx) in listItem" :key="idx"
+          :value="list.id"
+          @click="selectItem($event,idx)"
+          :class="{[$style.active]:idx == init}">{{ list.name }}</li>
+        </ul>
       </div>
-      <panel :products="products" title="—— 果味 ——" :listClass="$style.list" :itemClass="$style.item" :imgClass="$style.img" :titleClass="$style.title"></panel>
-    </div>
+      <!-- 右侧详情内容 -->
+      <div :class="$style.rightBox" v-for="(list,idx) in listItem" :key="idx" v-show="idx == init">
+        <div :class="$style.headerImg">
+          <img :src="baseUrl + list.image.url" alt="headerimg">
+        </div>
+        <panel
+          :products="list.products"
+          :title="'—— ' + list.name + ' ——'"
+          :listClass="$style.list"
+          :itemClass="$style.item"
+          :imgClass="$style.img"
+          :titleClass="$style.title"
+        ></panel>
+      </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import panel from "@/components/panel.vue";
-import img1 from "../../../assets/images/test/product-fry@1.png";
-import img2 from "../../../assets/images/test/product-fry@2.png";
-import img3 from "../../../assets/images/test/product-fry@3.png";
 export default {
   components: {
     panel
@@ -33,49 +38,26 @@ export default {
   data() {
     return {
       init: 0,
-      listItem: [
-        {
-          id: "01",
-          listTitle: "果味"
-        },
-        {
-          id: "02",
-          listTitle: "蔬菜"
-        },
-        {
-          id: "03",
-          listTitle: "干果"
-        }
-      ],
-      products: [
-        {
-          id: "1",
-          imgSrc: img1,
-          title: "带雨梨花"
-        },
-        {
-          id: "1",
-          imgSrc: img2,
-          title: "带雨梨花"
-        },
-        {
-          id: "1",
-          imgSrc: img3,
-          title: "带雨梨花"
-        }
-      ]
+      baseUrl: this.baseUrl,
+      listItem: []
     };
   },
   methods: {
-    getCategory:function(){
-
+    getCategory: function() {
+      let _this = this;
+      axios.get("api/category/all").then(response => {
+        let data = response.data;
+        if (data.success) {
+          _this.listItem = data.category;
+        }
+      });
     },
     selectItem: function(e, idx) {
       this.init = idx;
     }
   },
-  created(){
-    this.getCategory()
+  created() {
+    this.getCategory();
   }
 };
 </script>
@@ -119,9 +101,9 @@ export default {
     }
     .list {
       @include flex($direction: row);
-      justify-content: space-between;
+      justify-content:flex-start;
       .item {
-        width: 30%;
+        width: 33.33%;
         margin-bottom: 20px;
         text-align: center;
         .img {
