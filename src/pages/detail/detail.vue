@@ -6,55 +6,58 @@
     <div :class="$style.cart">
       <span :class="$style.cartNumber">10</span>
     </div>
-    <div :class="$style.container">
-      <div
-        v-for="(item,idx) in products"
-        :key="idx"
-      >
-      <!-- 头部 -->
-        <div :class="$style.head">
-          <div :class="$style.img">
-            <img
-              :src="item.headimg"
-              alt="productImage"
-            >
-          </div>
-          <div :class="$style.btnPanel">
 
+    <div :class="$style.container">
+      <!-- <div > -->
+      <!-- 头部 -->
+        <div :class="$style.head" v-for="(item,idx) in products" :key="idx">
+          <div :class="$style.img">
+            <img :src="baseUrl + item.main_img_url" alt="productImage">
           </div>
-          <p
-            v-if="item.stock"
-            :class="$style.stock"
-          >有货</p>
-          <p
-            v-else
-            :class="$style.stock"
-          >无货</p>
+          <div :class="$style.btnPanel"></div>
+          <p v-if="item.stock" :class="$style.stock">有货</p>
+          <p v-else :class="$style.stock">无货</p>
           <p :class="$style.name">{{ item.name }}</p>
           <p :class="$style.price">￥{{ item.price }}</p>
         </div>
+
         <!-- 产品详情部分 -->
         <div :class="$style.productDetail">
           <!-- tabs -->
           <ul :class="$style.list">
-            <li v-for="(item,idx) in tabs"
-            :key="idx"
-            :class="{[$style.active]:idx == init}"
-            @click="selectOne($event,idx)">{{ item.name }}</li>
+            <li v-for="(tab, idx) in tabs" :key="idx" :class="{[$style.active]:idx == init}"
+            @click="selectOne($event,idx)">{{ tab.name }}</li>
           </ul>
-          <div class="productCon">
-            <div class="proImage"></div>
-            <div class="proDesc"></div>
-            <div class="protect"></div>
+          <div :class="$style.productCon">
+            <div :class="$style.proImage" v-show="init == 0">
+              <img v-for="(img,idx) in products.product_images" :key="idx" :src="baseUrl + img.image.url" alt="detailImg">
+            </div>
+            <div :class="$style.proDesc" v-show="init == 1">
+              <div>
+                <span :class="$style.title">品名</span><span>贵妃笑</span>
+              </div>
+              <div>
+                <span :class="$style.title">口味</span><span>酸、甜、苦、辣</span>
+              </div>
+              <div>
+                <span :class="$style.title">产地</span><span>上海市</span>
+              </div>
+              <div>
+                 <span :class="$style.title">保质期</span><span>180天</span>
+              </div>
+            </div>
+            <div :class="$style.protect" v-show="init == 2">
+              <p>七天无理由免费退货</p>
+            </div>
           </div>
         </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import t1 from "@/assets/images/test/detail-13@1-dryfruit.png";
+import axios from 'axios';
 import Pheader from "@/components/public/header.vue";
 export default {
   name: "detail",
@@ -64,6 +67,7 @@ export default {
   data() {
     return {
       init:0,
+      baseUrl:this.baseUrl,
       tabs:[{
         name:'商品详情'
       },{
@@ -71,20 +75,28 @@ export default {
       },{
         name:'售后保障'
       }],
-      products: [
-        {
-          headimg: t1,
-          name: "贵妃笑100克",
-          stock: 989,
-          price: "0.01"
-        }
-      ]
+      products: []
     };
   },
   methods:{
     selectOne:function($event, idx){
       this.init = idx
+    },
+    getProductDetail:function(id){
+      let _this = this
+      axios.post('api/product/detail',{
+        id:id
+      }).then((response)=>{
+        if(response.data.success){
+        _this.products = response.data;
+        console.log(_this.products)
+      }
+      })
     }
+  },
+  created(){
+    let id = this.$route.params.id;
+    this.getProductDetail(id);
   }
 };
 </script>
@@ -167,6 +179,28 @@ export default {
       li.active{
         color:#ab956d;
         border-bottom:1px solid #ab956d;
+      }
+    }
+    .productCon{
+      padding-top:20px;
+      font-size:24px;
+      .proDesc{
+        @include flex;
+        align-items: flex-start;
+        .title{
+          width:100px;
+          display:inline-block;
+          text-align: center;
+          padding-left:40px;
+          color:#808080;
+        }
+        span{
+          padding-left:60px;
+          color:#333;
+        }
+        &>div{
+          margin-bottom:10px;
+        }
       }
     }
   }

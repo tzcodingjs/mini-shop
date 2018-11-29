@@ -5,12 +5,15 @@ import config from '../config.js'
 export const sequelize = new Sequelize(config)
 
 // 导入模型统一管理
-export const Banner        = sequelize.import(__dirname + '/banners.js')
-export const Image         = sequelize.import(__dirname + '/images.js')
-export const Product       = sequelize.import(__dirname + '/products.js')
-export const Theme_product = sequelize.import(__dirname + '/theme_products.js')
-export const Theme         = sequelize.import(__dirname + '/themes.js')
-export const Category      = sequelize.import(__dirname + '/category.js')
+export const Banner           = sequelize.import(__dirname + '/banners.js')
+export const Image            = sequelize.import(__dirname + '/images.js')
+export const Product          = sequelize.import(__dirname + '/products.js')
+export const Theme_product    = sequelize.import(__dirname + '/theme_products.js')
+export const Theme            = sequelize.import(__dirname + '/themes.js')
+export const Category         = sequelize.import(__dirname + '/category.js')
+export const Product_image    = sequelize.import(__dirname + '/product_image.js')
+export const Product_property = sequelize.import(__dirname + '/product_property.js')
+
 
 // 表间关联关系
 // banner关系
@@ -42,6 +45,10 @@ Product.belongsToMany(Theme, {
   through: Theme_product,
   foreignKey: 'product_id'
 })
+Product.hasMany(Product_image,{
+  foreignKey:'product_id',
+  sourceKey:'id'
+})
 
 // 目录关系
 Category.belongsTo(Image,{
@@ -52,3 +59,13 @@ Category.hasMany(Product,{
   foreignKey:'category_id',
   sourceKey:'id'
 })
+
+Product_image.belongsTo(Product,{
+  foreignKey:'product_id',
+  targetKey:'id'
+})
+Product_image.belongsTo(Image,{
+ foreignKey:'img_id',
+ targetKey:'id'
+})
+

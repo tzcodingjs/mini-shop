@@ -3,7 +3,7 @@
     <swiper :options="options">
       <swiper-slide v-for="(item,idx) in items" :key="idx">
         <!-- 图片 -->
-        <router-link :to="{ name:'Detail',params:{ id:item.id }}">
+        <router-link :to="{ name:'Detail',params:{ id:item.productsId }}">
           <img :src="baseUrl + item.image.url" :alt="item.alt" class="img">
         </router-link>
       </swiper-slide>
