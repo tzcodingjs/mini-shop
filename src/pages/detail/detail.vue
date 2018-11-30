@@ -1,63 +1,84 @@
 <template>
   <div>
+
     <!-- 页头 -->
     <pheader title="商品详情"></pheader>
+
     <!-- 购物车 -->
     <div :class="$style.cart">
       <span :class="$style.cartNumber">10</span>
     </div>
 
-    <div :class="$style.container">
-      <!-- <div > -->
-      <!-- 头部 -->
-        <div :class="$style.head" v-for="(item,idx) in products" :key="idx">
-          <div :class="$style.img">
-            <img :src="baseUrl + item.main_img_url" alt="productImage">
-          </div>
-          <div :class="$style.btnPanel"></div>
-          <p v-if="item.stock" :class="$style.stock">有货</p>
-          <p v-else :class="$style.stock">无货</p>
-          <p :class="$style.name">{{ item.name }}</p>
-          <p :class="$style.price">￥{{ item.price }}</p>
-        </div>
+    <div :class="$style.container" v-for="(item,idx) in products" :key="idx">
 
-        <!-- 产品详情部分 -->
-        <div :class="$style.productDetail">
-          <!-- tabs -->
-          <ul :class="$style.list">
-            <li v-for="(tab, idx) in tabs" :key="idx" :class="{[$style.active]:idx == init}"
-            @click="selectOne($event,idx)">{{ tab.name }}</li>
-          </ul>
-          <div :class="$style.productCon">
-            <div :class="$style.proImage" v-show="init == 0">
-              <img v-for="(img,idx) in products.product_images" :key="idx" :src="baseUrl + img.image.url" alt="detailImg">
-            </div>
-            <div :class="$style.proDesc" v-show="init == 1">
-              <div>
-                <span :class="$style.title">品名</span><span>贵妃笑</span>
-              </div>
-              <div>
-                <span :class="$style.title">口味</span><span>酸、甜、苦、辣</span>
-              </div>
-              <div>
-                <span :class="$style.title">产地</span><span>上海市</span>
-              </div>
-              <div>
-                 <span :class="$style.title">保质期</span><span>180天</span>
-              </div>
-            </div>
-            <div :class="$style.protect" v-show="init == 2">
-              <p>七天无理由免费退货</p>
-            </div>
+      <!-- 头部 -->
+      <div :class="$style.head">
+        <div :class="$style.img">
+          <img :src="baseUrl + item.main_img_url" alt="productImage">
+        </div>
+        <div :class="$style.btnPanel">
+          <div>
+            <span>数量</span>
+            <span>1</span>
+            <span></span>
+          </div>
+          <span :class="$style.middle"></span>
+          <div>
+            <span>加入购物车</span>
+            <span></span>
           </div>
         </div>
-      <!-- </div> -->
+        <p v-if="item.stock" :class="$style.stock">有货</p>
+        <p v-else :class="$style.stock">无货</p>
+        <p :class="$style.name">{{ item.name }}</p>
+        <p :class="$style.price">￥{{ item.price }}</p>
+      </div>
+
+      <!-- 产品详情部分 -->
+      <div :class="$style.productDetail">
+        <!-- tabs -->
+        <ul :class="$style.list">
+          <li
+            v-for="(tab, idx) in tabs"
+            :key="idx"
+            :class="{[$style.active]:idx == init}"
+            @click="selectOne($event,idx)"
+          >{{ tab.name }}</li>
+        </ul>
+        <div :class="$style.productCon">
+          <div :class="$style.proImage" v-show="init == 0">
+            <img
+              v-for="(img,idx) in item.product_images"
+              :key="idx"
+              :src="baseUrl + img.image.url"
+              alt="detailImg"
+            >
+          </div>
+          <div :class="$style.proDesc" v-show="init == 1">
+            <div>
+              <span :class="$style.title">品名</span><span>贵妃笑</span>
+            </div>
+            <div>
+              <span :class="$style.title">口味</span><span>酸、甜、苦、辣</span>
+            </div>
+            <div>
+              <span :class="$style.title">产地</span><span>上海市</span>
+            </div>
+            <div>
+              <span :class="$style.title">保质期</span><span>180天</span>
+            </div>
+          </div>
+          <div :class="$style.protect" v-show="init == 2">
+            <p>七天无理由免费退货</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 import Pheader from "@/components/public/header.vue";
 export default {
   name: "detail",
@@ -66,35 +87,38 @@ export default {
   },
   data() {
     return {
-      init:0,
-      baseUrl:this.baseUrl,
-      tabs:[{
-        name:'商品详情'
-      },{
-        name:'产品参数'
-      },{
-        name:'售后保障'
-      }],
+      init: 0,
+      baseUrl: this.baseUrl,
+      tabs: [
+        {
+          name: "商品详情"
+        },
+        {
+          name: "产品参数"
+        },
+        {
+          name: "售后保障"
+        }
+      ],
       products: []
     };
   },
-  methods:{
-    selectOne:function($event, idx){
-      this.init = idx
+  methods: {
+    selectOne: function($event, idx) {
+      this.init = idx;
     },
-    getProductDetail:function(id){
-      let _this = this
-      axios.post('api/product/detail',{
-        id:id
-      }).then((response)=>{
-        if(response.data.success){
-        _this.products = response.data;
-        console.log(_this.products)
-      }
-      })
+    getProductDetail: function(id) {
+      let _this = this;
+      axios.post("api/product/detail", {
+          id: id
+        }).then(response => {
+          if (response.status === 200) {
+            _this.products = response.data;
+          }
+        });
     }
   },
-  created(){
+  created() {
     let id = this.$route.params.id;
     this.getProductDetail(id);
   }
@@ -102,26 +126,26 @@ export default {
 </script>
 <style lang='scss' module>
 @import "@/assets/css/layout.scss";
-.cart{
-  position:fixed;
-  top:120px;
-  right:30px;
-  width:64px;
-  height:64px;
-  background:url('@/assets/images/icon/cart@top.png') no-repeat center;
-  background-size:cover;
-  .cartNumber{
+.cart {
+  position: fixed;
+  top: 120px;
+  right: 30px;
+  width: 64px;
+  height: 64px;
+  background: url("@/assets/images/icon/cart@top.png") no-repeat center;
+  background-size: cover;
+  .cartNumber {
     position: absolute;
-    top:-2px;
-    left:-24px;
-    width:40px;
-    height:40px;
-    line-height:40px;
+    top: -2px;
+    left: -24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     text-align: center;
-    font-size:26px;
-    color:#fff;
-    background:#ab956d;
-    border-radius:100%;
+    font-size: 26px;
+    color: #fff;
+    background: #ab956d;
+    border-radius: 100%;
   }
 }
 .container {
@@ -135,7 +159,7 @@ export default {
     width: 100vw;
     background: #fff;
     padding-bottom: 20px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     .img {
       padding-top: 80px;
       overflow: hidden;
@@ -150,8 +174,8 @@ export default {
       color: #fff;
       align-items: center;
     }
-    p{
-      margin-top:20px;
+    p {
+      margin-top: 20px;
     }
     .stock {
       font-size: 24px;
@@ -163,43 +187,51 @@ export default {
       font-size: 38px;
     }
   }
-  .productDetail{
-    background:#fff;
-    .list{
+  .productDetail {
+    width:100%;
+    background: #fff;
+    .list {
       @include flex(row);
-      height:90px;
-      line-height:90px;
-      color:#c7c7cb;
-      font-size:28px;
-      border-bottom:1px solid #d0d0d7;
-      li{
-        height:90px;
-        flex:1;
+      height: 90px;
+      line-height: 90px;
+      color: #c7c7cb;
+      font-size: 28px;
+      border-bottom: 1px solid #d0d0d7;
+      li {
+        height: 90px;
+        flex: 1;
       }
-      li.active{
-        color:#ab956d;
-        border-bottom:1px solid #ab956d;
+      li.active {
+        color: #ab956d;
+        border-bottom: 1px solid #ab956d;
       }
     }
-    .productCon{
-      padding-top:20px;
-      font-size:24px;
-      .proDesc{
+    .proImage{
+      font-size:0;
+      img{
+        width:100%;
+        display:block;
+      }
+    }
+    .productCon {
+      padding-top: 20px;
+      font-size: 24px;
+      .proDesc {
         @include flex;
         align-items: flex-start;
-        .title{
-          width:100px;
-          display:inline-block;
+        .title {
+          width: 100px;
+          display: inline-block;
           text-align: center;
-          padding-left:40px;
-          color:#808080;
+          padding-left: 40px;
+          color: #808080;
         }
-        span{
-          padding-left:60px;
-          color:#333;
+        span {
+          padding-left: 60px;
+          color: #333;
         }
-        &>div{
-          margin-bottom:10px;
+        & > div {
+          margin-bottom: 10px;
         }
       }
     }

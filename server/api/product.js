@@ -46,7 +46,6 @@ router.post('/detail', async (ctx,next)=>{
     }
   })
     ctx.body = {
-      success:true,
       products
     }
 })
