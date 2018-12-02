@@ -17,15 +17,19 @@
           <img :src="baseUrl + item.main_img_url" alt="productImage">
         </div>
         <div :class="$style.btnPanel">
-          <div>
+          <div :class="$style.picker">
             <span>数量</span>
             <span>1</span>
-            <span></span>
+            <span>
+              <img src="@/assets/images/icon/arrow@down.png" alt="picker">
+            </span>
           </div>
           <span :class="$style.middle"></span>
-          <div>
+          <div :class="$style.addCart">
             <span>加入购物车</span>
-            <span></span>
+            <span>
+              <img src="@/assets/images/icon/cart.png" alt="addCart">
+            </span>
           </div>
         </div>
         <p v-if="item.stock" :class="$style.stock">有货</p>
@@ -168,11 +172,34 @@ export default {
       @include flex(row);
       width: 660px;
       height: 100px;
+      font-size:28px;
       margin: 60px auto;
       border-radius: 100px;
       background-color: #ab956d;
       color: #fff;
       align-items: center;
+      &>div{
+         @include flex(row);
+        //  box-sizing: border-box;
+         justify-content: space-around;
+      }
+      .picker{
+        width:50%;
+        align-items: center;
+        img{
+          margin-top:6px;
+          width:50px;
+        }
+      }
+      .middle{
+        display:inline-block;
+        width:1px;
+        height:40px;
+        border:1px dotted #fff;
+      }
+      .addCart{
+        width:49%;
+      }
     }
     p {
       margin-top: 20px;

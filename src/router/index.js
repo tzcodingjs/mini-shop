@@ -6,6 +6,7 @@ import Cart from '@/pages/cart/cart.vue'
 import Personal from '@/pages/personal/personal.vue'
 import Theme from '@/pages/theme/theme.vue'
 import Detail from '@/pages/detail/detail.vue'
+import Picker from '@/components/utils/picker.vue'
 // 重置样式
 import '../assets/css/reset.scss'
 
@@ -14,8 +15,8 @@ Vue.use(Router)
 export default new Router({
   routes: [{
       path: '/',
-      name: 'Home',
-      component:Home
+      name: 'Picker',
+      component:Picker
     },
     {
       path: '/category',

@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "event-stream": "^4.0.1",
     "mysql": "^2.16.0",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^3.1.3",
