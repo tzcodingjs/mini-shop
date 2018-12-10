@@ -12,7 +12,10 @@
 构建工具：Vue-cli2 </br>
 
 # 项目运行效果
-
+<img src="https://github.com/Tzcodejs/mini-shop/blob/master/screenshot/home.png">
+<img src="https://github.com/Tzcodejs/mini-shop/blob/master/screenshot/theme.png">
+<img src="https://github.com/Tzcodejs/mini-shop/blob/master/screenshot/category.png">
+<img src="https://github.com/Tzcodejs/mini-shop/blob/master/screenshot/detail.png">
 
 
 # 运行Dome
