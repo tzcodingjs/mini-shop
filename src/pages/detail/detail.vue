@@ -19,7 +19,8 @@
         <div :class="$style.btnPanel">
           <div :class="$style.picker">
             <span>数量</span>
-            <span>1</span>
+            <!-- ui components -->
+            <mini-picker :listItem="listItem" :itemHeight="height" fontColor="#fff" :class="$style.num"></mini-picker>
             <span>
               <img src="@/assets/images/icon/arrow@down.png" alt="picker">
             </span>
@@ -104,7 +105,9 @@ export default {
           name: "售后保障"
         }
       ],
-      products: []
+      products: [],
+      listItem:[1,2,3,4,5,6,7,8,9,10],
+      height:162
     };
   },
   methods: {
@@ -184,8 +187,13 @@ export default {
          justify-content: space-around;
       }
       .picker{
+        @include flex(row);
         width:50%;
         align-items: center;
+        .num{
+          width:100px;
+          height:100%;
+        }
         img{
           margin-top:6px;
           width:50px;

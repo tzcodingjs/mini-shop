@@ -11,6 +11,10 @@
 后端：koa2 MySql(Sequelize) </br>
 构建工具：Vue-cli2 </br>
 
+# 项目运行效果
+
+
+
 # 运行Dome
 ## 前端部分
 ``` bash
