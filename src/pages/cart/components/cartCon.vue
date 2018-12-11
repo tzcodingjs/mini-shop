@@ -1,34 +1,34 @@
 <template>
   <div :class="$style.container">
-    <p v-if="cartList" >您还没有添加任何商品，快去添加吧！</p>
+    <p v-if="!cartList.length">您还没有添加任何商品，快去添加吧！</p>
     <template v-else>
-      <div :class="$style.cartItem">
-        <img src="../../../assets/images/icon/circle@noselected.png" alt="" :class="$style.check">
+      <div :class="$style.cartItem" v-for="(item,index) in cartList" :key="index">
+        <img src="../../../assets/images/icon/circle@selected.png" :class="$style.check">
         <div :class="$style.cartImg">
-          <img src="../../../assets/images/test/product-dryfruit@1.png" alt="">
+          <img :src="item.head_image" alt="picture">
         </div>
         <div :class="$style.text">
           <div :class="$style.num">
-            <span>梨花带雨</span>
+            <span>{{ item.name }}</span>
             <div :class="$style.counter">
-              <i :class="$style.minus">-</i>
-              <span :class="$style.number">2</span>
-              <i :class="$style.plus">+</i>
+              <span :class="$style.minus" @click.stop="minus(item.id,item.count)">-</span>
+              <span :class="$style.number">{{ item.count }}</span>
+              <span :class="$style.plus" @click.stop="plus(item.id,item.count)">+</span>
             </div>
           </div>
           <div :class="$style.monery">
-            <span>￥0.01</span>
-            <span :class="$style.x">x</span>
+            <span>￥{{ item.price }}</span>
+            <span :class="$style.x" @click.stop="deleteGoods(item.id)">x</span>
           </div>
         </div>
       </div>
       <div :class="$style.conutBanner">
-        <img src="../../../assets/images/icon/all@selected.png" alt="" :class="$style.selected">
-        <span>全选(2)</span>
+        <img src="../../../assets/images/icon/all@selected.png" alt :class="$style.selected">
+        <span>全选({{ totalNum }})</span>
         <span :class="$style.toBuy">下单</span>
         <i>|</i>
-        <span>￥0.001</span>
-        <img src="../../../assets/images/icon/arrow.png" alt="">
+        <span>￥{{ totalPrice }}</span>
+        <img src="../../../assets/images/icon/arrow.png" alt="icon">
       </div>
     </template>
   </div>
@@ -38,12 +38,41 @@
 export default {
   data() {
     return {
-      cartList: [
-        {
-          title:false
-        }
-      ]
+      cartList: []
     };
+  },
+  computed: {
+    cartData() {
+      let data = this.$store.state.cart.cart;
+      return data && data.length > 0 ? data : [];
+    },
+    totalPrice() {
+      return this.$store.getters.totalPrice;
+    },
+    totalNum() {
+      return this.$store.getters.totalNum;
+    }
+  },
+  methods: {
+    getCartList() {
+      let data = this.cartData;
+      this.cartList = data;
+    },
+    // 增加数量
+    plus(id) {
+      this.$store.dispatch('plus',id)
+    },
+    // 减少数量
+    minus(id) {
+      this.$store.dispatch('minus',id)
+    },
+    // 删除商品
+    deleteGoods(id) {
+      this.$store.dispatch('deleteGoods', id)
+    }
+  },
+  created() {
+    this.getCartList();
   }
 };
 </script>
@@ -51,6 +80,7 @@ export default {
 @import "@/assets/css/layout.scss";
 .container {
   margin-top: 86px;
+  margin-bottom:180px;
   @include flex;
   .cart-item {
     @include flex(row);
@@ -59,6 +89,7 @@ export default {
     align-items: center;
     border-bottom: 1px solid #d0d0d7;
     .check {
+      width:40px;
       margin-left: 20px;
     }
     .cart-img {

@@ -34,11 +34,11 @@ npm run build
 ## 后端部分
 ``` bash
 
-# 安装依赖
-npm install
-
 # 进入server目录下
 cd server
+
+# 安装依赖
+npm install
 
 # 启动服务，启动服务之前请先连接数据库
 npm start
@@ -62,11 +62,11 @@ npm run build
 ## Server
 ``` bash
 
-# install dependencies
-npm install
-
 # cd server directory
 cd server
+
+# install dependencies
+npm install
 
 # start server after connect mysql
 npm start
