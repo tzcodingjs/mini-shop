@@ -3,7 +3,19 @@
     <p v-if="!cartList.length">您还没有添加任何商品，快去添加吧！</p>
     <template v-else>
       <div :class="$style.cartItem" v-for="(item,index) in cartList" :key="index">
-        <img src="../../../assets/images/icon/circle@selected.png" :class="$style.check">
+        <!-- checkbox -->
+        <img
+          v-if="item.status"
+          src="../../../assets/images/icon/circle@selected.png"
+          :class="$style.check"
+          @click.stop="selectCancel(item.id)"
+        >
+         <img
+          v-else
+          src="../../../assets/images/icon/circle@noselected.png"
+          :class="$style.check"
+          @click.stop="selectCancel(item.id)"
+        >
         <div :class="$style.cartImg">
           <img :src="baseUrl + item.main_img_url" alt="picture">
         </div>
@@ -23,8 +35,11 @@
         </div>
       </div>
       <div :class="$style.conutBanner">
-        <img src="../../../assets/images/icon/all@selected.png" alt :class="$style.selected">
-        <span>全选({{ totalNum }})</span>
+        <div @click.stop="selectAll" :class="$style.selectAll">
+          <img v-if="isSelectAll" src="../../../assets/images/icon/all@selected.png" :class="$style.selected">
+          <img v-else src="../../../assets/images/icon/all.png" :class="$style.selected">
+          <span>全选({{ totalNum }})</span>
+        </div>
         <span :class="$style.toBuy">下单</span>
         <i>|</i>
         <span>￥{{ totalPrice }}</span>
@@ -39,7 +54,7 @@ export default {
   data() {
     return {
       cartList: [],
-      baseUrl: this.baseUrl,
+      baseUrl: this.baseUrl
     };
   },
   computed: {
@@ -52,6 +67,9 @@ export default {
     },
     totalNum() {
       return this.$store.getters.totalNum;
+    },
+    isSelectAll(){
+      return this.$store.getters.selectAllStatus;
     }
   },
   methods: {
@@ -61,15 +79,22 @@ export default {
     },
     // 增加数量
     plus(id) {
-      this.$store.dispatch('plus',id)
+      this.$store.dispatch("plus", id);
     },
     // 减少数量
     minus(id) {
-      this.$store.dispatch('minus',id)
+      this.$store.dispatch("minus", id);
     },
     // 删除商品
     deleteGoods(id) {
-      this.$store.dispatch('deleteGoods', id)
+      this.$store.dispatch("deleteGoods", id);
+    },
+    // checkbox
+    selectCancel(id) {
+      this.$store.dispatch('selectCancel',id)
+    },
+    selectAll(){
+      this.$store.dispatch('selectAll')
     }
   },
   created() {
@@ -81,7 +106,7 @@ export default {
 @import "@/assets/css/layout.scss";
 .container {
   margin-top: 86px;
-  margin-bottom:180px;
+  margin-bottom: 180px;
   @include flex;
   .cart-item {
     @include flex(row);
@@ -90,7 +115,7 @@ export default {
     align-items: center;
     border-bottom: 1px solid #d0d0d7;
     .check {
-      width:40px;
+      width: 40px;
       margin-left: 20px;
     }
     .cart-img {
@@ -154,6 +179,10 @@ export default {
     bottom: 90px;
     background-color: #ab956d;
     color: #fff;
+    .selectAll{
+      @include flex(row);
+       align-items: center;
+    }
     .selected {
       width: 48px;
       height: 48px;

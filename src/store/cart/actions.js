@@ -11,5 +11,11 @@ export default {
   },
   deleteGoods(ctx,id){
     ctx.commit('deleteGoods',id)
+  },
+  selectAll(ctx){
+    ctx.commit('selectAll')
+  },
+  selectCancel(ctx,id){
+    ctx.commit('selectCancel',id)
   }
 }

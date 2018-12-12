@@ -22,5 +22,8 @@ export default {
       }
     }
     return totalPrice / base;
+  },
+  selectAllStatus(state){
+    return state.selectAll;
   }
 }
