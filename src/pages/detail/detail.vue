@@ -6,7 +6,7 @@
     <!-- 购物车 -->
     <router-link to="/cart">
       <div :class="$style.cart">
-        <span :class="$style.cartNumber">{{ this.$store.getters.totalNum }}</span>
+        <span :class="$style.cartNumber" v-if="this.$store.getters.totalNum">{{ this.$store.getters.totalNum }}</span>
       </div>
     </router-link>
 
@@ -154,7 +154,10 @@ export default {
         console.log("请选择数量");
         return;
       }
+      // 添加数量
       product.count = this.num;
+      // 添加选中状态
+      product.status = true;
       this.$store.dispatch("addGoods", product);
     }
   },

@@ -3,13 +3,13 @@ export default {
   plus(ctx,id){
     ctx.commit('plus',id)
   },
-  minus(){
-
+  minus(ctx,id){
+    ctx.commit('minus',id)
   },
   addGoods(ctx,data){
     ctx.commit('addGoods',data)
   },
-  deleteGoods(ctx,data){
-    ctx.commit('deleteGoods',data)
+  deleteGoods(ctx,id){
+    ctx.commit('deleteGoods',id)
   }
 }

@@ -33,9 +33,6 @@
 
 <script>
 import panel from "@/components/panel.vue";
-import t1 from "../../../assets/images/test/product-cake-a@3.png";
-import t2 from "../../../assets/images/test/product-dryfruit@4.png";
-import t3 from "../../../assets/images/test/product-rice@7.png";
 export default {
   components: {
     panel

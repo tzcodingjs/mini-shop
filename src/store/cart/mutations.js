@@ -1,15 +1,23 @@
 export default {
   plus(state, id) {
-   let cart = state.cart;
-   for(let i in cart){
-     if(cart[i].id === id){
-       cart[i].count += 1
-     }
-   }
-     return
+    let cart = state.cart;
+    for (let i in cart) {
+      if (cart[i].id === id) {
+        cart[i].count += 1
+      }
+    }
+    return
   },
-  minus() {
-
+  minus(state, id) {
+    let cart = state.cart;
+    for (let i in cart) {
+      if (cart[i].id === id) {
+        cart[i].count -= 1
+        if(cart[i].count <= 0){
+          cart.splice(i,1)
+        }
+      }
+    }
   },
   addGoods(state, data) {
     let cart = state.cart;
@@ -21,7 +29,12 @@ export default {
     }
     cart.push(data);
   },
-  deleteGoods(state, data) {
-    console.log(state)
+  deleteGoods(state, id) {
+    let cart = state.cart;
+    for(let i in cart){
+      if(cart[i].id === id){
+        cart.splice(i,1)
+      }
+    }
   }
 }

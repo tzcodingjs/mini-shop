@@ -5,7 +5,7 @@
       <div :class="$style.cartItem" v-for="(item,index) in cartList" :key="index">
         <img src="../../../assets/images/icon/circle@selected.png" :class="$style.check">
         <div :class="$style.cartImg">
-          <img :src="item.head_image" alt="picture">
+          <img :src="baseUrl + item.main_img_url" alt="picture">
         </div>
         <div :class="$style.text">
           <div :class="$style.num">
@@ -38,7 +38,8 @@
 export default {
   data() {
     return {
-      cartList: []
+      cartList: [],
+      baseUrl: this.baseUrl,
     };
   },
   computed: {
