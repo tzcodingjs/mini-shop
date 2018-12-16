@@ -1,3 +1,8 @@
+
+function saveData(type,data){
+  window.localStorage.setItem(type,JSON.stringify(data))
+}
+
 export default {
   plus(state, id) {
     let cart = state.cart;
@@ -6,6 +11,7 @@ export default {
         cart[i].count += 1
       }
     }
+    saveData('cartList',cart)
     return
   },
   minus(state, id) {
@@ -18,6 +24,7 @@ export default {
         }
       }
     }
+    saveData('cartList',cart)
   },
   addGoods(state, data) {
     let cart = state.cart;
@@ -28,11 +35,7 @@ export default {
       }
     }
     cart.push(data);
-    // try {
-    //   localStorage.cart = cart;
-    // } catch (error) {
-
-    // }
+    saveData('cartList',cart)
   },
   deleteGoods(state, id) {
     let cart = state.cart;
@@ -41,6 +44,7 @@ export default {
         cart.splice(i, 1)
       }
     }
+    saveData('cartList',cart)
   },
   selectAll(state) {
     let cart = state.cart;

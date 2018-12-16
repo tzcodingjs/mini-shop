@@ -1,16 +1,16 @@
 // state
 
-// let defaultCart = JSON.stringify([]);
-// try {
-//   if(localStorage.cart){
-//     defaultCart = localStorage.cart
-//     console.log(defaultCart)
-//   }
-// } catch (error) {
+let storage = window.localStorage;
+let defaultCart = JSON.parse(storage.getItem('cartList'));
+try {
+  if(!defaultCart){
+    defaultCart = [];
+  }
+} catch (error) {
 
-// }
+}
 
 export default {
-  cart: [],
+  cart: defaultCart,
   selectAll:true
 }
