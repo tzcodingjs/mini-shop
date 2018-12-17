@@ -12,9 +12,9 @@
     </div>
     <div :class="$style.address">
       <dl>
-        <dt>
+        <dt @click.stop="goToAddress">
           <span>地址管理</span>
-          <img src="../../../assets/images/icon/arrow@right.png" alt="">
+          <img src="../../../assets/images/icon/arrow@right.png" alt>
         </dt>
         <dd>重庆</dd>
         <dd>185</dd>
@@ -28,15 +28,20 @@
 export default {
   data() {
     return {};
+  },
+  methods: {
+    goToAddress() {
+      this.$router.push("./address");
+    }
   }
 };
 </script>
 <style lang='scss' module>
 @import "@/assets/css/layout.scss";
 .container {
-  height:calc(100vh - 90px);
+  height: calc(100vh - 90px);
   padding-top: 85px;
-  background-color:#EDEDED;
+  background-color: #ededed;
   @include flex;
   .header {
     @include flex(row);
@@ -73,14 +78,14 @@ export default {
     color: #c7c7c7;
     background: #fff;
     dt {
-      position:relative;
+      position: relative;
       text-align: center;
-      img{
-        position:absolute;
-        top:14px;
-        right:20px;
-        width:50px;
-        height:50px;
+      img {
+        position: absolute;
+        top: 14px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
         transform: rotate(-90deg);
       }
     }

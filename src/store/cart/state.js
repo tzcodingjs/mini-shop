@@ -7,7 +7,7 @@ try {
     defaultCart = [];
   }
 } catch (error) {
-
+  console.log(error)
 }
 
 export default {
