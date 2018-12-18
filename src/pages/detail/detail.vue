@@ -23,7 +23,7 @@
             <mini-picker
               :listItem="listItem"
               :itemHeight="height"
-              fontColor="#fff"
+              color="#fff"
               :class="$style.num"
               @confirm="confirm"
             ></mini-picker>

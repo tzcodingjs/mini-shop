@@ -16,9 +16,9 @@
           <span>地址管理</span>
           <img src="../../../assets/images/icon/arrow@right.png" alt>
         </dt>
-        <dd>重庆</dd>
-        <dd>185</dd>
-        <dd>沙坪坝</dd>
+        <dd>{{ this.$store.state.address.address.username }}</dd>
+        <dd>{{ this.$store.state.address.address.phone }}</dd>
+        <dd v-html="getDetailAddress()"></dd>
       </dl>
     </div>
   </div>
@@ -32,6 +32,14 @@ export default {
   methods: {
     goToAddress() {
       this.$router.push("./address");
+    },
+    getDetailAddress() {
+      let data = this.$store.state.address.address.addressDetail;
+      let city = '';
+      for(let i in data){
+        city += data[i].name
+      }
+      return city
     }
   }
 };
