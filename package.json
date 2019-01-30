@@ -7,15 +7,14 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start:client": "npm run dev",
-    "start:server":"nodemon server/index.js",
+    "start:server": "nodemon server/index.js",
     "build": "node build/build.js",
-    "app":"concurrently \"npm run start:server\" \"npm run start:client\""
+    "app": "concurrently \"npm run start:server\" \"npm run start:client\""
   },
   "dependencies": {
     "axios": "^0.18.0",
     "debug": "^2.6.3",
     "ejs": "^2.6.1",
-    "event-stream": "^4.0.1",
     "koa": "^2.2.0",
     "koa-body": "^4.0.4",
     "koa-bodyparser": "^3.2.0",
