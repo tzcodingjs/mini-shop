@@ -16,57 +16,23 @@
 
 
 # 运行Dome
-## 前端部分
 ``` bash
 # 安装依赖
 npm install
 
-# 项目将运行在localhost:9000 || 127.0.0.1:9000
-npm run dev
-
-# build for production with minification
-npm run build
-
-```
-## 后端部分
-``` bash
-
-# 进入server目录下
-cd server
-
-# 安装依赖
-npm install
-
-# 启动服务，启动服务之前请先连接数据库
-npm start
-
+# 项目将运行在localhost:9000 || 127.0.0.1:9000 （运行项目前请先启动数据库）
+npm run app
 ```
 
 # Build Setup
-## Web
 ``` bash
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:9000 or 127.0.0.1:9000
-npm run dev
-
-# build for production with minification
-npm run build
-
-```
-
-## Server
-``` bash
-
-# cd server directory
-cd server
-
-# install dependencies
-npm install
-
-# start server after connect mysql
-npm start
+# serve with hot reload at localhost:9000 or 127.0.0.1:9000 （start server after connect mysql）
+npm run app
 ```
 
 *项目持续更新中...*
+
+*updating...*
