@@ -1,21 +1,21 @@
 // actions
 export default {
-  plus(ctx, id) {
-    ctx.commit('plus', id)
+  plus({ commit }, id) {
+    commit('plus', id)
   },
-  minus(ctx, id) {
-    ctx.commit('minus', id)
+  minus({ commit }, id) {
+    commit('minus', id)
   },
-  addGoods(ctx, data) {
-    ctx.commit('addGoods', data)
+  addGoods({ commit }, data) {
+    commit('addGoods', data)
   },
-  deleteGoods(ctx, id) {
-    ctx.commit('deleteGoods', id)
+  deleteGoods({ commit }, id) {
+    commit('deleteGoods', id)
   },
-  selectAll(ctx) {
-    ctx.commit('selectAll')
+  selectAll({ commit }) {
+    commit('selectAll')
   },
-  selectCancel(ctx, id) {
-    ctx.commit('selectCancel', id)
+  selectCancel({ commit }, id) {
+    commit('selectCancel', id)
   }
 }

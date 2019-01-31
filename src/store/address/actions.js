@@ -1,6 +1,6 @@
 
 export default {
-  saveAddress(ctx,data){
-    ctx.commit('saveAddress',data)
+  saveAddress({ commit },data){
+    commit('saveAddress',data)
   }
 }
